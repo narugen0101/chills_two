@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#new"
+  root'post#index'
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
 

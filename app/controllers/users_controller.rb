@@ -66,5 +66,11 @@ class UsersController < ApplicationController
     @likes = Like.where(user_id: @user.id)
   end
 
+  def ensure_correct_user
+    if @current_user.id != params[:id].to_i
+      redirect_to("/posts/index")
+    end
+  end
+
 
 end
