@@ -1,0 +1,10 @@
+<%= form_tag("/posts/create") do %>
+    <p>タイトル：</p>
+    <input name="title">
+    <p>YouTubeのURL:</p>
+    <input name="youtube_url">
+    <p>感想：</p>
+    <textarea name="content"></textarea>
+
+    <input type="submit" value="投稿">
+<% end %>

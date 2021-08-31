@@ -1,0 +1,35 @@
+<div class="posts-show-item">
+    <strong><%= link_to(@post.user.name, "/users/#{@post.user.id}") %><br></strong>
+    <%# タイトル %>
+    <strong><%= @post.title %></strong><br>
+    <%# 戻る %>
+    <%= link_to :back do %>
+    <button>戻る</button>
+    <% end %>
+    <%# youtube系 %>
+    <p id="notice"><%= notice %></p>
+    <strong>Youtube url:</strong>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+    <%# コンテンツ %>
+    <strong>感想</strong>
+    <%= @post.content %><br>
+    <%# 作成時間 %>
+    <%= @post.created_at %><br>
+    <%# いいね機能 %>
+    <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+        <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+    <% else %>
+        <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+        <span class="fa fa-heart like-btn"></span>
+        <% end %>
+    <% end %>
+    <%# いいねの数 %>
+    <%= @likes_count %>
+    <%# 編集と削除 %>
+    <% if @post.user_id == @current_user.id %>
+        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>
+    <% end %>
+</div>

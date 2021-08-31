@@ -1,0 +1,16 @@
+<div class="user">
+    <h2><%= @user.name %></h2>
+    <p><%= @user.email %></p>
+    <% if @user.id == @current_user.id %>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %><br>
+    <% end %>
+    <% @user.posts.each do |post| %>
+        <%= link_to(post.title, "/posts/#{post.id}") %><br>
+        <%= post.content %><br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+    <% end %>
+    <ul class="user-tabs">
+        <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+        <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+<%= form_tag("/posts/#{@post.id}/update") do %>
+    <p>タイトル：</p>
+    <input name="title" value="<%= @post.title %>">
+    <p>YouTubeのURL:</p>
+    <textarea name="youtube_url"></textarea>
+    <p>感想：</p>
+    <textarea name="content"><%= @post.content %></textarea>
+    <input type="submit" value="保存">
+<% end %>

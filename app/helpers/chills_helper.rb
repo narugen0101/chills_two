@@ -1,0 +1,2 @@
+module ChillsHelper
+end

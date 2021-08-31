@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+    <div class="posts-index-item">
+        <%= link_to(post.user.name, "/users/#{post.user.id}") %><br>
+        <%= link_to(post.title, "/posts/#{post.id}") %><br>
+        <%= post.content %><br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+    </div>
+<% end %>
